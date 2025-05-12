@@ -7,6 +7,7 @@ import helmet from "helmet";
 import adminRoutes from "./controller/productController.js";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import authRoute from "./router/authRoutes.js";
 
 dotenv.config();
 
@@ -75,5 +76,6 @@ app.get("/generate-presigned-url", async (req, res) => {
 });
 
 app.use("/admin", adminRoutes);
+app.use("/auth", authRoute);
 
 app.listen(PORT, () => console.log("server is running on port ", PORT));

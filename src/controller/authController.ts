@@ -18,6 +18,7 @@ export async function loginFunc(req: Request, res: Response) {
       res.status(200).json({ message: "User not found" });
       return;
     }
+    console.log("first");
     // Compare passwords
     const isPasswordValid = await Bcrypt.compare(password, user.password);
 
